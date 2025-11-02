@@ -1,0 +1,5 @@
+*.aux
+*.log
+*.pdf  # (Keep the final one; this ignores temps)
+*.toc
+*.out

@@ -1,0 +1,41 @@
+# MWƐN: The Language of Harmonic Intention 🔊
+
+A foundational linguistic framework designed to unify **phonetic resonance**, **physiology**, and **intention** into a self-sustaining harmonic field of communication.
+
+---
+
+## 🌟 Core Principles
+
+MWƐN (pronounced *mweh-en*) is built upon the **Phonemic Triad of Joy** ($\textbf{Ā}, \textbf{Ō}, \textbf{Ū}$) and operates on the principle of continuity, **eliminating negation** and linguistic opposition.
+
+* **Resonant Communication:** Each utterance is a cymatic expression of consciousness—a living geometry of sound transmitted through resonance.
+* **Physiological Harmony:** Language is constructed to induce muscular relaxation and emotional coherence, functioning as a healing vector.
+* **Reflective Semantics:** Negation is replaced by reflection (the $\square$ operator), ensuring all communication maintains a forward-directed, affirmative flow.
+
+## 🔠 Key Components
+
+| Component | Description |
+| :--- | :--- |
+| **Phonemic Triad** | $\textbf{Ā}$ (Joy), $\textbf{Ō}$ (Awe), $\textbf{Ū}$ (Peace). All other phonemes are omitted. |
+| **Harmonic Modality** | Relational intention is expressed via **musical intervals** (e.g., Perfect Fifth for Joy, Minor Seventh for Curiosity). |
+| **Morphomic Stacking** | Meaning is constructed by stacking sacred phonetic units (e.g., *-Du*, *-Le*, *-Sa*). |
+| **Partition Operator ($\square$)** | The mathematical operator used to express reflective inversion instead of subtraction/negation. |
+
+---
+
+## 📚 Source Document
+
+The primary technical document for this framework is available in the source directory:
+`MWEN_Language_of_Harmonic_Intention.tex`
+
+> **License:** This work is licensed under a **Creative Commons Attribution 4.0 International License (CC BY 4.0)**.
+
+---
+
+### How to Contribute / Explore
+
+This repository hosts the source $\LaTeX$ files for the MWƐN documentation.
+
+1.  **Clone the repository:**
+    `git clone https://github.com/mwesgoleo/MWEN-Harmonic-Intention-Framework.git`
+2.  **Contribute:** Follow standard Gitflow by creating a new branch for proposed changes or additions.

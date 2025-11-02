@@ -1,0 +1,23 @@
+name: Build Whitebook PDF
+on: [push, pull_request]
+jobs:
+  latex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: teatimeguest/setup-texlive-action@v3
+        with:
+          packages: >-
+            scheme-small latexmk xetex luatex
+            amsmath amssymb geometry hyperref microtype
+            fontspec unicode-math titlesec fancyhdr
+            graphicx bookmark
+      - name: Build
+        run: |
+          cd src
+          latexmk -xelatex -quiet -halt-on-error -file-line-error main.tex
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: whitebook
+          path: src/*.pdf

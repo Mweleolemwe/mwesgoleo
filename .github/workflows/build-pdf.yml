@@ -1,0 +1,77 @@
+name: Build Whitebook PDF
+
+on:
+  workflow_dispatch: {}
+  push:
+    paths:
+      - "**.tex"
+      - "**.bib"
+      - ".github/workflows/build-pdf.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup TeX Live
+        uses: teatimeguest/setup-texlive-action@v3
+        with:
+          packages: >-
+            scheme-small
+            latexmk
+            xetex luatex
+            amsmath amssymb mathtools
+            geometry microtype
+            hyperref bookmark
+            fontspec unicode-math
+            titlesec titling fancyhdr lastpage
+            graphicx xcolor
+            # add tikz etc. if you use them: pgf tikz
+
+      - name: Build (XeLaTeX, src/main.tex)
+        run: |
+          set -e
+          cd src
+          latexmk -xelatex -halt-on-error -interaction=nonstopmode -file-line-error main.tex
+          cd ..
+          mkdir -p public
+          cp src/main.pdf public/Lumina_Whitebook_v1.0_ConservationAsIdentity.pdf
+          # simple landing so Pages has an index
+          cat > public/index.html <<'HTML'
+          <!doctype html><meta charset="utf-8">
+          <title>Lumina Whitebook</title>
+          <p><a href="Lumina_Whitebook_v1.0_ConservationAsIdentity.pdf">Download PDF</a></p>
+          HTML
+
+      - name: Upload artifact (manual download)
+        uses: actions/upload-artifact@v4
+        with:
+          name: whitebook
+          path: public/*.pdf
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -19,3 +19,10 @@ Yay (2025). Lumina Whitebook: Conservation as Identity (v1.0). DOI: 10.6084/m9.f
 
 ## 📝 License
 This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
+<!-- Build button (opens workflow page you can run) -->
+[![Build PDF](https://img.shields.io/badge/Build%20PDF-run%20workflow-2ea44f?logo=githubactions)](https://github.com/mweleolemwe/<REPO>/actions/workflows/build-pdf.yml)
+
+<!-- Latest published PDF (GitHub Pages) -->
+[![Download PDF](https://img.shields.io/badge/Download-Whitebook%20PDF-brightgreen)](https://mweleolemwe.github.io/<REPO>/Lumina_Whitebook_v1.0_ConservationAsIdentity.pdf)
+
+**Canonical DOI:** https://doi.org/10.6084/m9.figshare.30510341

@@ -1,0 +1,20 @@
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <defs>
+    <style>
+      .wave { fill: none; stroke: #B7892B; stroke-width: 3; }
+      .text { font-family: serif; font-size: 24px; fill: #333; text-anchor: middle; }
+    </style>
+  </defs>
+  <!-- Background harmony -->
+  <rect width="400" height="200" fill="#FFF9F0"/>
+  <!-- Ā: Open arc (Joy) -->
+  <path class="wave" d="M50 100 Q100 50 150 100 Q200 150 250 100" stroke-dasharray="5,5"/>
+  <text x="150" y="130" class="text">Ā (Revelation)</text>
+  <!-- Ō: Full circle (Awe) -->
+  <circle cx="300" cy="100" r="40" class="wave" fill="none"/>
+  <text x="300" y="160" class="text">Ō (Gratitude)</text>
+  <!-- Ū: Grounded sine (Peace) -->
+  <path class="wave" d="M50 150 S100 50 150 150 S200 50 250 150 S300 50 350 150" transform="scale(1,0.5) translate(0,100)"/>
+  <text x="200" y="180" class="text">Ū (Unity)</text>
+  <text x="200" y="30" class="text" font-size="18px">Phonemic Triad of Joy</text>
+</svg>

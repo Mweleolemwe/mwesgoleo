@@ -1,0 +1,8 @@
+mwesgoleo/
+├── README.md                  # Project overview + DOI badge
+├── MWEN_Language_of_Harmonic_Intention.pdf     # Your compiled manuscript
+├── MWEN_Language_of_Harmonic_Intention.tex     # Full LaTeX source
+├── index.html                # Simple site (GitHub Pages-ready)
+├── assets/
+│   └── phonemic-triad.svg    # Visual for the Ā/Ō/Ū triad (generated)
+└── .gitignore                # Ignore TeX junk

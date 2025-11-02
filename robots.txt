@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mwesgoleo.github.io/<REPO>/sitemap.xml

@@ -1,0 +1,63 @@
+name: Build & Publish Whitebook
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up TeX Live
+        uses: teatimeguest/setup-texlive-action@v3
+        with:
+          packages: >-
+            scheme-small latexmk lualatex
+            amsmath amssymb amsfonts geometry microtype
+            mathtools bm csquotes
+            hyperref cleveref bookmark
+            enumitem thmtools
+            pdfpages
+            fontspec unicode-math % (safe to have even if unused)
+
+      - name: Build PDFs
+        run: |
+          make
+          # Copy master PDF and the Volume II PDF into a publish directory
+          mkdir -p public
+          cp whitebook.pdf public/
+          cp -r build public/build
+
+      - name: Upload artifact (for Actions download)
+        uses: actions/upload-artifact@v4
+        with:
+          name: whitebook
+          path: |
+            whitebook.pdf
+            build/Volume_II_Onu_Calculus.pdf
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

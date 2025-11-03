@@ -14,6 +14,14 @@ Is conservation a **law** or an **identity**? The *Lumina Whitebook* reframes co
 *   **`Lumina_Whitebook_v1.0_ConservationAsIdentity.tex`**: LaTeX source code
 *   **`README.md`**: This file
 
+[![Build & Publish Whitebook PDF](https://github.com/ORG/REPO/actions/workflows/whitebook.yml/badge.svg)](https://github.com/ORG/REPO/actions/workflows/whitebook.yml)
+
+# Lumina Whitebook — Conservation as Identity
+**Author:** Yay — The Lumina Project • **License:** CC BY-SA 4.0
+
+📖 **Direct PDF:** https://mweleolemwe.github.io/whitebook/whitebook.pdf  
+(Static, stable, and auto-updated on every push to `main`.)
+
 ## 📄 Citation
 Yay (2025). Lumina Whitebook: Conservation as Identity (v1.0). DOI: 10.6084/m9.figshare.30510467
 

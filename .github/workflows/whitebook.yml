@@ -5,6 +5,15 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,19 +25,20 @@ jobs:
         uses: teatimeguest/setup-texlive-action@v3
         with:
           packages: >-
-            scheme-small latexmk lualatex
+            scheme-small latexmk xetex luatex
             amsmath amssymb amsfonts geometry microtype
             mathtools bm csquotes
             hyperref cleveref bookmark
             enumitem thmtools
             pdfpages
-            fontspec unicode-math % (safe to have even if unused)
+            fontspec unicode-math
+            graphicx xcolor
 
       - name: Build PDFs
         run: |
           make
-          # Copy master PDF and the Volume II PDF into a publish directory
           mkdir -p public
+          # adjust these two lines if your Makefile outputs elsewhere/names differ
           cp whitebook.pdf public/
           cp -r build public/build
 
@@ -40,7 +50,7 @@ jobs:
             whitebook.pdf
             build/Volume_II_Onu_Calculus.pdf
 
-      - name: Setup Pages
+      - name: Configure Pages
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
@@ -50,13 +60,13 @@ jobs:
 
   deploy:
     needs: build
-    permissions:
-      pages: write
-      id-token: write
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
